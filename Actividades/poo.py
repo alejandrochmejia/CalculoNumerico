@@ -32,5 +32,3 @@ alejandro.setEdad(19)
 alejandro.setDNI("32278392")
 alejandro.mostrar()
 print("Valor logico de mayoria de edad:",alejandro.esMayor(),"\n")
-
-###
