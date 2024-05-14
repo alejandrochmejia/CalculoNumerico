@@ -1,8 +1,6 @@
 import numpy as np
 
-###### CAMBIOS DE BASE #########
-
-def fromDEC(n,base):
+def fromDEC(n,base): #Función que traduce del sistema decimal a cualquier sistema numérico
     if n == 0:
         return '0'
     nums = []
@@ -11,23 +9,22 @@ def fromDEC(n,base):
         nums.append(str(r))
     return ''.join(reversed(nums))
 
-def toDEC(n,base):
+def toDEC(n,base): #Función que traduce de cualquier sistema numérico al sistema decimal
     return str(int(n,base))
 
-##### GAUSS SEIDEL ########
-def creacionMatriz(n,lista):
+def creacionMatriz(n,lista): #Función que crea una matriz de numpy con los elementos de una lista
     if len(lista) > n**2:
         pass
     else:
         matriz = np.array(lista[:n**2]).reshape(n,n)
         return matriz
 
-def creacionVector(n,lista = []):
+def creacionVector(n,lista = []): #Función que crea un vector de numpy con los elementos de una lista
     if len(lista) == 0:
         lista = [0.0 for i in range(n)] 
     return np.array(lista[:n])
 
-def GaussSeidel(a, b, x0=None, tol=0.000001, max_ite=100):
+def GaussSeidel(a, b, x0=None, tol=0.000001, max_ite=100): #Función que realiza la operación del sistema de ecuaciones con el método Gauss Seidel
     n = len(b)
     if x0 is None:
         x0 = np.zeros(n)
