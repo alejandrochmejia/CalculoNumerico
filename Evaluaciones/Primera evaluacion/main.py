@@ -203,72 +203,8 @@ def main(page: ft.Page): #Función que crea la página
               requerimientosalerta.open = True
               page.update()
           
-          else: #Si el condicional ejecuta exitosamente este 'else' es porque las validaciones se hicieron correctamente y no hay ningún error
-
-               #Se obtiene el valor del dropdown de bases de entrada
-               if str(DDEntrada.value) == "DEC":
-                   baseEntrada = 10
-                   valorEntrada = EntradaSN.value
-               elif str(DDEntrada.value) == "BIN":
-                   baseEntrada = 2
-                   valorEntrada = EntradaSN.value
-               elif str(DDEntrada.value) == "TER":
-                   baseEntrada = 3
-                   valorEntrada = EntradaSN.value
-               elif str(DDEntrada.value) == "CUA":
-                   baseEntrada = 4
-                   valorEntrada = EntradaSN.value
-               elif str(DDEntrada.value) == "OCT":
-                   baseEntrada = 8
-                   valorEntrada = EntradaSN.value
-               elif str(DDEntrada.value) == "HEX":
-                   baseEntrada = 16
-                   valorEntrada = EntradaSN.value
-
-               #Se obtiene el valor del dropdown de bases de salida
-               if str(DDSalida.value) == "DEC":
-                    baseSalida = 10
-               elif str(DDSalida.value) == "BIN":
-                   baseSalida = 2
-               elif str(DDSalida.value) == "TER":
-                   baseSalida = 3
-               elif str(DDSalida.value) == "CUA":
-                   baseSalida = 4
-               elif str(DDSalida.value) == "OCT":
-                   baseSalida = 8
-               elif str(DDSalida.value) == "HEX":
-                   baseSalida = 16
-
-               #Se ejecuta el código dependiendo de los valores de las bases de entrada y de salida
-               if baseEntrada == 10:
-                    if baseSalida == 10: #Si es la misma base decimal, se imprime el mismo valor
-                         SalidaSN.value = str(valorEntrada)
-                         page.update()
-                    elif baseSalida == 16: #La base hexadecimal es todo un caso aparte ya que contiene letras
-                         cadena = hex(int(valorEntrada))
-                         cadena = cadena[2:]
-                         cadena = cadena.upper()
-                         SalidaSN.value = cadena
-                         page.update()
-                    else: #Para las demás bases
-                        SalidaSN.value = funciones.fromDEC(valorEntrada,baseSalida)
-                        page.update()
-               else: #Cuando la base de entrada no es la decimal se ejecuta este 'else'
-                    valorEntrada = funciones.toDEC(valorEntrada,baseEntrada)
-                    if baseSalida == 10: #Si la base de salida es decimal
-                         SalidaSN.value = str(valorEntrada)
-                         page.update()
-                    elif baseSalida == 16: #Si la base de salida es hexadecimal
-                         cadena = hex(int(valorEntrada))
-                         cadena = cadena[2:]
-                         cadena = cadena.upper()
-                         SalidaSN.value = cadena
-                         page.update()
-                    else: #Si la base de salida es cualquiera otra base
-                        SalidaSN.value = funciones.fromDEC(valorEntrada,baseSalida)
-                        page.update()
-               
-               
+          else:
+               SalidaSN.value = funciones.ejecucionSn(str(DDEntrada.value),str(DDSalida.value),EntradaSN.value)
                page.update()
 
     OperarSN = ft.ElevatedButton( #Botón de operar que al presionar se ejecutara la función anterior para la operación
@@ -580,8 +516,8 @@ def main(page: ft.Page): #Función que crea la página
     """
     transicioncambio = ft.AnimatedSwitcher( #Animación que su contenido va a variar entre los 2 programas, cuando se haga el cambio ejecutará la animación de desvanecimiento
         filaPrincipal,
-        transition=ft.AnimatedSwitcherTransition.FADE  ,
-        duration=1000,
+        transition=ft.AnimatedSwitcherTransition.SCALE,
+        duration=500,
         reverse_duration=200,
         switch_in_curve=ft.AnimationCurve.LINEAR,
         switch_out_curve=ft.AnimationCurve.LINEAR,
