@@ -14,7 +14,7 @@ def fromDEC(n,base): #Función que traduce del sistema decimal a cualquier siste
 def toDEC(n,base): #Función que traduce de cualquier sistema numérico al sistema decimal  
     return str(int(n,base))
 
-def ejecucionSn(strEntrada,strSalida,n): #Funcion de conversión de sistemas numéricos
+def SNexe(strEntrada,strSalida,n): #Funcion de conversión de sistemas numéricos
        if strEntrada == "DEC":
              baseEntrada = 10
        elif strEntrada == "BIN":
