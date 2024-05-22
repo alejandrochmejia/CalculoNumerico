@@ -14,7 +14,7 @@ def fromDEC(n,base): #Función que traduce del sistema decimal a cualquier siste
 def toDEC(n,base): #Función que traduce de cualquier sistema numérico al sistema decimal  
     return str(int(n,base))
 
-def ejecucionSn(strEntrada,strSalida,n): #Funcion de conversión de sistemas numéricos
+def SNexe(strEntrada,strSalida,n): #Funcion de conversión de sistemas numéricos
        if strEntrada == "DEC":
              baseEntrada = 10
        elif strEntrada == "BIN":
@@ -45,10 +45,7 @@ def ejecucionSn(strEntrada,strSalida,n): #Funcion de conversión de sistemas num
             if baseSalida == 10: #Si es la misma base decimal, se imprime el mismo valor
                 resultado = str(n)
             elif baseSalida == 16: #La base hexadecimal es todo un caso aparte ya que contiene letras
-                cadena = hex(int(n))
-                cadena = cadena[2:]
-                cadena = cadena.upper()
-                resultado = cadena
+                resultado = hex(int(n))[2:].upper()
             else: #Para las demás base
                 resultado = fromDEC(n,baseSalida)
        else: #Cuando la base de entrada no es la decimal se ejecuta este 'else'
@@ -56,10 +53,7 @@ def ejecucionSn(strEntrada,strSalida,n): #Funcion de conversión de sistemas num
             if baseSalida == 10: #Si la base de salida es decimal
                 resultado = str(n)
             elif baseSalida == 16: #Si la base de salida es hexadecimal
-                cadena = hex(int(n))
-                cadena = cadena[2:]
-                cadena = cadena.upper()
-                resultado = cadena
+                resultado = hex(int(n))[2:].upper()
             else: #Si la base de salida es cualquiera otra base
                 resultado = fromDEC(n,baseSalida)
         

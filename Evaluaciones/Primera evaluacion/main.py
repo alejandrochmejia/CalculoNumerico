@@ -204,7 +204,7 @@ def main(page: ft.Page): #Función que crea la página
               page.update()
           
           else:
-               SalidaSN.value = funciones.ejecucionSn(str(DDEntrada.value),str(DDSalida.value),EntradaSN.value)
+               SalidaSN.value = funciones.SNexe(str(DDEntrada.value),str(DDSalida.value),EntradaSN.value)
                page.update()
 
     OperarSN = ft.ElevatedButton( #Botón de operar que al presionar se ejecutara la función anterior para la operación
