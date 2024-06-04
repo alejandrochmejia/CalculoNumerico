@@ -6,7 +6,7 @@ A = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 
 # Calculamos el número de condición de la matriz
 cond_A = np.linalg.cond(A)
-# Calculate the norm of the matrix
+# Calcular la normal de la matriz
 norm_A = np.linalg.norm(A)
 
 #Prints
